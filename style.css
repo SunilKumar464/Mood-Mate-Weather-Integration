@@ -1,0 +1,260 @@
+:root {
+            --primary-color: #ff7b54;
+            --secondary-color: #ffb26b;
+            --card-bg: #fff5eb;
+            --text-color: #4a4a4a;
+            --border-radius: 15px;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            min-height: 100vh;
+            padding: 20px;
+            color: var(--text-color);
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 0 10px;
+        }
+
+        .app-title {
+            color: white;
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        .weather {
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 18px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            box-shadow: var(--shadow);
+            margin-bottom: 20px;
+        }
+
+        .date-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .calendar-dropdown {
+            background-color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 8px 15px;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .calendar {
+            width: 100%;
+            margin-top: 10px;
+            border-collapse: collapse;
+        }
+
+        .calendar th, .calendar td {
+            text-align: center;
+            padding: 8px;
+            font-size: 14px;
+        }
+
+        .calendar .active {
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+        }
+
+        .calendar .mood-day {
+            position: relative;
+        }
+
+        .calendar .mood-day:after {
+            content: '';
+            position: absolute;
+            bottom: 2px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+        }
+
+        .mood-selector {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+        }
+
+        .mood-option {
+            font-size: 28px;
+            cursor: pointer;
+            opacity: 0.5;
+            transition: all 0.3s ease;
+        }
+
+        .mood-option:hover, .mood-option.selected {
+            opacity: 1;
+            transform: scale(1.2);
+        }
+
+        .note-input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin: 10px 0;
+            resize: none;
+            font-size: 14px;
+        }
+
+        .save-btn {
+            width: 100%;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 15px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .save-btn:hover {
+            background-color: #ff6a3d;
+        }
+
+        .tab-switcher {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .tab-btn {
+            background-color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            padding: 10px 25px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+        }
+
+        .tab-btn.active {
+            background-color: var(--card-bg);
+        }
+
+        .entry-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .entry-card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 15px;
+            box-shadow: var(--shadow);
+        }
+
+        .entry-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 5px;
+        }
+
+        .entry-mood {
+            font-size: 24px;
+        }
+
+        .entry-note {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .entry-date {
+            font-size: 12px;
+            color: #777;
+        }
+
+        .entry-weather {
+            font-size: 12px;
+            color: #777;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 5px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .notification.show {
+            opacity: 1;
+        }
+
+        #calendar-view {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        #calendar-view.expanded {
+            max-height: 300px;
+        }
+
+        @media (max-width: 600px) {
+            .entry-list {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Mood colors for days in calendar */
+        .mood-happy { background-color: #FFD700; }
+        .mood-neutral { background-color: #ADD8E6; }
+        .mood-sad { background-color: #A9A9A9; }
+        .mood-angry { background-color: #FF6347; }
+        .mood-sick { background-color: #90EE90; }

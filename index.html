@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoodMate - Mood Journal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="app-title">MoodMate</div>
+            <div class="weather">
+                ☀ <span id="current-temp">--°C</span>
+            </div>
+        </header>
+
+        <div class="tab-switcher">
+            <button class="tab-btn active" data-tab="entry">New Entry</button>
+            <button class="tab-btn" data-tab="history">All Notes</button>
+        </div>
+
+        <div id="entry-tab">
+            <div class="card">
+                <div class="date-header">
+                    <div id="current-date">April 24, 2024</div>
+                    <div class="calendar-dropdown" onclick="toggleCalendar()">April ▼</div>
+                </div>
+
+                <div id="calendar-view">
+                    <table class="calendar">
+                        <thead>
+                            <tr>
+                                <th>S</th>
+                                <th>M</th>
+                                <th>T</th>
+                                <th>W</th>
+                                <th>T</th>
+                                <th>F</th>
+                                <th>S</th>
+                            </tr>
+                        </thead>
+                        <tbody id="calendar-dates">
+                            <!-- Calendar dates will be filled by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div>How are you feeling today?</div>
+                <div class="mood-selector">
+                    <div class="mood-option" data-mood="happy" onclick="selectMood(this)">😊</div>
+                    <div class="mood-option" data-mood="neutral" onclick="selectMood(this)">😐</div>
+                    <div class="mood-option" data-mood="sad" onclick="selectMood(this)">😔</div>
+                    <div class="mood-option" data-mood="angry" onclick="selectMood(this)">😠</div>
+                    <div class="mood-option" data-mood="sick" onclick="selectMood(this)">🤢</div>
+                </div>
+
+                <textarea class="note-input" id="note-input" placeholder="Add a note..."></textarea>
+                <button class="save-btn" onclick="saveMoodEntry()">Save</button>
+            </div>
+        </div>
+
+        <div id="history-tab" class="hidden">
+            <div class="card">
+                <h2>All Notes</h2>
+                <div class="entry-list" id="entry-list">
+                    <!-- Entries will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="notification" id="notification">Entry saved successfully!</div>
+
+    <script src="script.js"></script>
+</body>
+</html>
